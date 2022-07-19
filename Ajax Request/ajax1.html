@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+   <button id="button">Get Text File</button>
+   <br><br>
+   <div id="text"></div>
+        
+        <script>
+                 // Create event listener
+            document.getElementById('button').addEventListener('click', loadText);
+
+            function loadText(){
+                // Create the XHR Object
+                var xhr = new XMLHttpRequest();
+                // OPEN - Type, url/file, async
+                xhr.open('GET', 'sample.txt', true);
+
+                xhr.onload = function() {
+                    if(this.status == 200) {
+                       //Printing the content of sample.text file on button click
+                       document.getElementById('text').innerHTML = this.responseText;
+                    } 
+                }
+                // Sends request
+                xhr.send();
+            }
+            // HTTP Statuses
+            // 200: "OK"
+            // 403: "Forbidden"
+            // 404: "Not found"
+        </script>
+    </body>
+</html>
